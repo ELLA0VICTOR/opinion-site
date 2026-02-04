@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-terminal-900: #0a0e27;
+  --color-terminal-800: #151932;
+  --color-terminal-700: #1e2540;
+  --color-terminal-600: #2a3254;
+  --color-cyber-500: #00d9ff;
+  --color-signal-500: #ff6b35;
+  --color-success-500: #00ffa3;
+}
+
+@layer base {
+  * {
+    @apply border-terminal-600;
+  }
+  
+  body {
+    @apply bg-terminal-900 text-slate-100 font-sans antialiased;
+    letter-spacing: -0.01em;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-cyber-500 text-terminal-900 font-semibold rounded-lg 
+           transition-all duration-200 hover:bg-cyber-400 hover:scale-105 
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-cyber-500 focus:ring-offset-2 focus:ring-offset-terminal-900;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 border-2 border-cyber-500 text-cyber-500 font-semibold rounded-lg 
+           transition-all duration-200 hover:bg-cyber-500/10 hover:border-cyber-400 
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-cyber-500 focus:ring-offset-2 focus:ring-offset-terminal-900;
+  }
+  
+  .gradient-border {
+    @apply relative;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--color-cyber-500), var(--color-signal-500));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+  
+  .card-terminal {
+    @apply bg-terminal-800 border border-terminal-600 rounded-lg p-6 
+           transition-all duration-300 hover:border-cyber-500/50 hover:shadow-lg hover:shadow-cyber-500/10;
+  }
+  
+  .text-gradient-cyber {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyber-400 to-cyber-600;
+  }
+  
+  .text-gradient-signal {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-signal-400 to-signal-600;
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .grid-bg {
+    background-image: 
+      linear-gradient(to right, rgba(0, 217, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 217, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-cyber-500), transparent);
+    animation: scan 3s linear infinite;
+    opacity: 0.3;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-terminal-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-terminal-600);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cyber-500);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-cyber-500);
+  color: var(--color-terminal-900);
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-cyber-500);
+  outline-offset: 2px;
+}
