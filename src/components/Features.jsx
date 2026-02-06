@@ -1,6 +1,6 @@
 import ChartIcon from './icons/ChartIcon.jsx';
 import SignalIcon from './icons/SignalIcon.jsx';
-import PortfolioIcon from './icons/Portfolioicon.jsx';
+import PortfolioIcon from './icons/temp.jsx';
 
 /**
  * FeatureCard - Individual feature card component
